@@ -1,5 +1,7 @@
 node {
     def app
+    def image = 'registry.hub.docker.com/careydevelopment/ecosystem-user-service'
+    def branch = '0.2.7-devops-work'
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -29,11 +31,5 @@ node {
 				app.push("latest")
             }
  }
-}catch (e) {
-		echo 'Error occurred during build process!'
-		echo e.toString()
-		currentBuild.result = 'FAILURE'
-	} finally {
-        junit '**/target/surefire-reports/TEST-*.xml'		
-	}
+
 }
