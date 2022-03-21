@@ -23,10 +23,17 @@ node {
         }
     }
 
- stage('Push') {
+    stage('Push') {
 	    	docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {            
 				app.push("${env.BUILD_NUMBER}")
 				app.push("latest")
             }
  }
+}catch (e) {
+		echo 'Error occurred during build process!'
+		echo e.toString()
+		currentBuild.result = 'FAILURE'
+	} finally {
+        junit '**/target/surefire-reports/TEST-*.xml'		
+	}
 }
