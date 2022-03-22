@@ -7,7 +7,8 @@ pipeline {
   agent any
   stages {
     stage('Cloning Git') {
-      checkout scm
+      steps {
+        git(url: 'https://github.com/releaseworks/hellonode.git')
  
       }
     }
