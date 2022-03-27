@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git(url: 'https://github.com/releaseworks/hellonode.git')
+        git(url: 'https://github.com/MeghanaMahale/hellonode.git')
  
       }
     }
