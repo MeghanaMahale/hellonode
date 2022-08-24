@@ -1,4 +1,3 @@
-
 pipeline {
   environment {
     imagename = "latest"
